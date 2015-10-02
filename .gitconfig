@@ -1,9 +1,9 @@
 [core]
 	excludesfile = /Users/hihats/.gitignore_global
-	editor = subl
+	editor = vim
 [user]
-	name = 
-	email = 
+	name = hihats
+	email = h_tsukamoto@innovation.co.jp
 [color]
 	ui = true
 [difftool "sourcetree"]
