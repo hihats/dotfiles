@@ -1,2 +1,22 @@
 tap 'caskroom/cask'
 
+brew 'brew-cask'
+brew 'git'
+brew 'rbenv'
+brew 'mysql'
+brew 'vim'
+brew 'nkf'
+brew 'node'
+
+cask 'iterm2'
+cask 'dropbox'
+cask 'virtualbox'
+cask 'vagrant'
+cask 'google-japanese-ime' `if failed, reboot`
+cask 'google-chrome'
+cask 'karabiner'
+cask 'slack'
+cask 'atom'
+cask 'catchmouse'
+cask 'mysqlworkbench'
+cask 'sourcetree'
