@@ -1,37 +1,42 @@
-# 環境構築
+# Creation of an Environment 環境構築
 
-## Mac OSX 
+## Mac OSX
 [XCode Install](https://developer.apple.com/jp/xcode/)
 ```bash
 sudo xcodebuild -license
 ```
 ```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ```
 
 ```bash
 brew tap homebrew/brewdler
 ```
 
-Applications can be in [Brewfile]()
+Applications can be in [Brewfile](https://github.com/hihats/dotfiles/blob/master/Brewfile)
 
 
-
+```bash
 $ ln -sf ~/Dropbox/Public/.ssh/config ~/.ssh/config
+```
 
-##Sublime Text
-###Package Control
-###.settingファイル
-
-
-http://morizyun.github.io/blog/marvericks-rails-setup-ruby-rvm-msyql/
-http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
-
+### Ruby Env
+```bash
 rbenv global 2.2.0
 rbenv rehash
 
 rbenv exec gem install bundler
+```
+http://morizyun.github.io/blog/marvericks-rails-setup-ruby-rvm-msyql/
+http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
 
+### atom
+[sync setting](http://morizyun.github.io/blog/marvericks-rails-setup-ruby-rvm-msyql/
+http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
+)
+
+## Sublime Text
+### Package Control
+### .settingファイル
 
 
 ##aws setup
