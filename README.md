@@ -57,7 +57,6 @@ $ sudo gpasswd -a hihats wheel
 	$ sudo vim /etc/sysconfig/i18n
 	sudo yum update
 	sudo yum install ruby-devel gcc sqlite-devel gcc-c++
-	sudo yuminstall openssl-devel readline-devel zlib-devel curl-devel libyaml-devel
 	sudo yum install openssl-devel readline-devel zlib-devel curl-devel libyaml-devel
 	sudo yum list
 	sudo yum list | grep mysql
@@ -70,7 +69,6 @@ $ sudo gpasswd -a hihats wheel
 	sudo yum install make bzip2 autoconf automake libtool bison git
 	sudo yum install libffi
 	sudo yum install libffi-devel
-	sudo yum install gcc gcc-c++
 ```
 
 
