@@ -78,9 +78,6 @@ $ sudo gpasswd -a hihats wheel
 	export PATH="${RBENV_ROOT}/bin:${PATH}"
 	eval "$(rbenv init -)"
 	>> /etc/profile
-
-	sudo gpasswd -a hihats apache
-	sudo chown apache:apache itbee/
 ```
 [Linux環境へrbenv install](http://weblabo.oscasierra.net/install-rbenv-rubybuild-to-redhat/)
 [rbenvをシステムワイドにインストールする](http://office.tsukuba-bunko.org/ppoi/entry/systemwide-rbenv)
