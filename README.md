@@ -89,7 +89,6 @@ cat /etc/profile
 mkdir rbenv/plugins
 cd rbenv/plugins/
 git clone git://github.com/sstephenson/ruby-build.git
-rbenv install -l
 . /etc/profile
 rbenv install -l
 rbenv install 2.0.0-p643
@@ -140,11 +139,13 @@ $ yum install libmcrypt-devel.x86_64
 $ yum install libtidy libtidy-devel
 $ yum install autoconf.noarch
 $ phpenv install 5.6.14
+$ phpenv rehash
+$ phpenv global 5.6.14
 ```
 [20+ common PHP compilation errors and fix – Unix](http://crybit.com/20-common-php-compilation-errors-and-fix-unix/)
 [phpenv+php-build環境によるphpバージョン管理~Mac（Yosemite）編~](http://qiita.com/omega999/items/c5b1c177331f8d342efd)
 [ubuntuにphp-buildでphp5.5を入れるためにシェルスクリプトと格闘した記録](http://hirobanex.net/article/2013/09/1379231000)
-
+`rbenv: version `2.2.3' is not installed (set by RBENV_VERSION environment variable)`とRBENV_VERSIONについて怒られる場合がある。phpenvがRBENV_VERSION変数を見に行ってしまっている。
 
 ### Passenger install
 EC2のt2.microではメモリが足りなくてコンパイル出来ませんでした。t2.small以上を選択する必要があります。
