@@ -43,6 +43,9 @@ http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
 ```bash
 $ vim /etc/hosts
 $ vim /etc/sysconfig/network
+$ sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+$ sudo vi /etc/sysconfig/clock
+ZONE="Asia/Tokyo"
 ```
 ### create user
 ```bash
