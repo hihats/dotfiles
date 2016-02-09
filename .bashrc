@@ -23,6 +23,7 @@ alias chrome='open -a "Google Chrome"'
 alias incog='open -a "Google Chrome --incognito"'
 alias sblm='open -a "Sublime Text.app"'
 alias mwb='open -a "MySQLWorkbench.app"'
+alias swb='open -a "SQLWorkbenchJ.app"'
 alias slack='open -a "Slack.app"'
 export DATE=`date "+%Y%m%d"`
 alias touchlog='echo "#"`date "+%Y-%m"` >> ~/Dropbox/log/`date "+%Y%m"`log.md'

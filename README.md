@@ -18,6 +18,7 @@ Applications can be in [Brewfile](https://github.com/hihats/dotfiles/blob/master
 ```bash
 $ ln -sf ~/Dropbox/Public/.ssh/config ~/.ssh/config
 ```
+* 公開可能なものだけ
 
 ### Ruby Env
 ```bash
@@ -41,10 +42,10 @@ http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
 
 ##aws setup
 ```bash
-$ vim /etc/hosts
-$ vim /etc/sysconfig/network
+$ sudo vim /etc/hosts
+$ sudo vim /etc/sysconfig/network
 $ sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-$ sudo vi /etc/sysconfig/clock
+$ sudo vim /etc/sysconfig/clock
 ZONE="Asia/Tokyo"
 ```
 ### create user
@@ -141,14 +142,19 @@ $ yum install libpng-devel libjpeg-devel
 $ yum install libmcrypt-devel.x86_64
 $ yum install libtidy libtidy-devel
 $ yum install autoconf.noarch
+$ export PHPENV_APACHE_MODULE_PATH="/etc/httpd/modules"
+$ vim plugins/php-build/share/php-build/default_configure_options
 $ phpenv install 5.6.14
 $ phpenv rehash
 $ phpenv global 5.6.14
+$ cp /usr/lib64/httpd/modules/libphp5.so versions/5.6.14/
 ```
-[20+ common PHP compilation errors and fix – Unix](http://crybit.com/20-common-php-compilation-errors-and-fix-unix/)
-[phpenv+php-build環境によるphpバージョン管理~Mac（Yosemite）編~](http://qiita.com/omega999/items/c5b1c177331f8d342efd)
-[ubuntuにphp-buildでphp5.5を入れるためにシェルスクリプトと格闘した記録](http://hirobanex.net/article/2013/09/1379231000)
-`rbenv: version `2.2.3' is not installed (set by RBENV_VERSION environment variable)`とRBENV_VERSIONについて怒られる場合がある。phpenvがRBENV_VERSION変数を見に行ってしまっている。
+[20+ common PHP compilation errors and fix – Unix](http://crybit.com/20-common-php-compilation-errors-and-fix-unix/)  
+Apache
+[phpenvをシステムワイドにインストールする方法](http://qiita.com/ryurock/items/2b8eb451f12761c18b9c)  
+[phpenv+php-build環境によるphpバージョン管理~Mac（Yosemite）編~](http://qiita.com/omega999/items/c5b1c177331f8d342efd)  
+[ubuntuにphp-buildでphp5.5を入れるためにシェルスクリプトと格闘した記録](http://hirobanex.net/article/2013/09/1379231000)  
+`rbenv: version \`2.2.3\' is not installed (set by RBENV_VERSION environment variable)`とRBENV_VERSIONについて怒られる場合がある。phpenvがRBENV_VERSION変数を見に行ってしまっている。
 
 ### Passenger install
 EC2のt2.microではメモリが足りなくてコンパイル出来ませんでした。t2.small以上を選択する必要があります。
