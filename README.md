@@ -126,6 +126,23 @@ root
 
 	passenger-install-apache2-module
 
+### LinuxにPython環境構築
+pyenv install
+```bash
+$ cd /usr/local/
+$ git clone https://github.com/yyuu/pyenv.git
+$ echo 'export PYENV_ROOT="/usr/local/pyenv"' >> /etc/profile
+$ echo 'export PATH="${PYENV_ROOT}/bin:${PATH}"' >> /etc/profile
+$ echo 'eval "$(pyenv init -)"' >> /etc/profile
+```
+python install (e.g. 3.5.0)
+```bash
+$ pyenv install 3.5.0
+$ pyenv global 3.5.0
+$ pyenv local 3.5.0
+$ sudo pip install --upgrade pip
+```
+
 ### LinuxにPHP環境構築
 phpenv使用
 ```bash
