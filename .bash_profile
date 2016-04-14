@@ -10,3 +10,6 @@ export PATH
 
 eval "$(rbenv init -)"
 export PATH="/usr/local/sbin:$PATH"
+export PYENV_ROOT="/Users/hihats/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"

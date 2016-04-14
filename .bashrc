@@ -34,3 +34,5 @@ export GEM_HOME=/Users/hihats/.rbenv/versions/2.0.0-p353/
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+complete -C aws_completer aws

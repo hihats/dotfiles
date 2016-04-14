@@ -30,6 +30,11 @@ rbenv exec gem install bundler
 http://morizyun.github.io/blog/marvericks-rails-setup-ruby-rvm-msyql/
 http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
 
+### Python Env
+```
+pip install pylama pylama-pylint
+```
+
 ### atom
 [sync setting](http://morizyun.github.io/blog/marvericks-rails-setup-ruby-rvm-msyql/
 http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
