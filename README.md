@@ -3,32 +3,42 @@
 ## Mac OSX
 [XCode Install](https://developer.apple.com/jp/xcode/)
 ```bash
-sudo xcodebuild -license
+$ sudo xcodebuild -license
+# install homebrew
+$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# enable brew-bundle
+$ brew tap homebrew/bundle
 ```
-```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ```
+** * brewdlerは[bundle](https://github.com/Homebrew/homebrew-bundle)にReplaceされたようです**
 
 ```bash
-brew tap homebrew/brewdler
+$ mkdir -p ~/github/hihats && cd ~/github/hihats
+$ git clone https://github.com/hihats/dotfiles.git
 ```
+ここではMacOS標準搭載のgitを使い、以後はbrew installしたgitを使う
 
 Applications can be in [Brewfile](https://github.com/hihats/dotfiles/blob/master/Brewfile)
 
+```bash
+$ cd dotfiles
+$ brew bundle
+```
+
+### bashrc,vimrcなど
 
 ```bash
-$ ln -sf ~/Dropbox/Public/.ssh/config ~/.ssh/config
+$ sh makesymlink.sh
 ```
-* 公開可能なものだけ
+** ##ATTENTION## ssh/configは公開可能なものだけかチェック**
 
 ### Ruby Env
+基本はDockerで開発するが、ローカルでちょっとしたスクリプトを動かすケースなど
 ```bash
 rbenv global 2.2.0
 rbenv rehash
 
 rbenv exec gem install bundler
 ```
-http://morizyun.github.io/blog/marvericks-rails-setup-ruby-rvm-msyql/
-http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
 
 ### Python Env
 ```
@@ -36,16 +46,13 @@ pip install pylama pylama-pylint
 ```
 
 ### atom
-[sync setting](http://morizyun.github.io/blog/marvericks-rails-setup-ruby-rvm-msyql/
-http://www.1x1.jp/blog/2014/04/how-to-setup-application-on-osx.html
-)
+[sync setting](https://github.com/atom-community/sync-settings)で設定を同期
+- Copy the access token to Sync Settings configuration.(別保管)
+- [Gist ID](https://gist.github.com/hihats/e6d56a103a8e61be4f32) (username/******部)を設定する
 
-## Sublime Text
-### Package Control
-### .settingファイル
+ローカルは以上
 
-
-##aws setup
+## aws EC2 instance setup
 ```bash
 $ sudo vim /etc/hosts
 $ sudo vim /etc/sysconfig/network
