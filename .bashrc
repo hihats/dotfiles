@@ -11,7 +11,7 @@ darwin*)
   alias ll="ls -l"
   alias la="ls -la"
   ;;
-linux*)  
+linux*)
   alias ls='ls --color=auto'
   alias la='ls -la'
   ;;
@@ -21,7 +21,6 @@ alias rm='rm -i'
 # Applications
 alias chrome='open -a "Google Chrome"'
 alias incog='open -a "Google Chrome --incognito"'
-alias sblm='open -a "Sublime Text.app"'
 alias mwb='open -a "MySQLWorkbench.app"'
 alias swb='open -a "SQLWorkbenchJ.app"'
 alias slack='open -a "Slack.app"'

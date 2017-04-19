@@ -1,6 +1,8 @@
 # /bin/bash
-ln -sf ~/github/dotfiles/.bash_profile ~/.bash_profile
-ln -sf ~/github/dotfiles/.bashrc ~/.bashrc
-ln -sf ~/github/dotfiles/.vimrc ~/.vimrc
-ln -sf ~/github/dotfiles/.ssh/config ~/.ssh/config
 
+set -e
+
+ln -sf ./.bash_profile ~/.bash_profile
+ln -sf ./.bashrc ~/.bashrc
+ln -sf ./.vimrc ~/.vimrc
+ln -sf ./.ssh/config ~/.ssh/config

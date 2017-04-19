@@ -3,7 +3,7 @@
 	editor = vim
 [user]
 	name = Hisahiro Tsukamoto
-	email = h_tsukamoto@innovation.co.jp
+	email = hishats@gmail.com
 [color]
 	ui = true
 [difftool "sourcetree"]
