@@ -9,7 +9,7 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 # enable brew-bundle
 $ brew tap homebrew/bundle
 ```
-** * brewdlerは[bundle](https://github.com/Homebrew/homebrew-bundle)にReplaceされたようです**
+:warning:**brewdlerは[bundle](https://github.com/Homebrew/homebrew-bundle)にReplaceされたようです**
 
 ```bash
 $ mkdir -p ~/github/hihats && cd ~/github/hihats
@@ -29,7 +29,7 @@ $ brew bundle
 ```bash
 $ sh makesymlink.sh
 ```
-** ##ATTENTION## ssh/configは公開可能なものだけかチェック**
+:warning:**ssh/configは公開可能なものだけかチェック**
 
 ### Ruby Env
 基本はDockerで開発するが、ローカルでちょっとしたスクリプトを動かすケースなど
