@@ -2,7 +2,9 @@
 
 set -e
 
-ln -sf ./.bash_profile ~/.bash_profile
-ln -sf ./.bashrc ~/.bashrc
-ln -sf ./.vimrc ~/.vimrc
-ln -sf ./.ssh/config ~/.ssh/config
+ln -sf ~/github/hihats/dotfiles/.bash_profile ~/.bash_profile
+ln -sf ~/github/hihats/dotfiles/.bashrc ~/.bashrc
+ln -sf ~/github/hihats/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/github/hihats/dotfiles/.ssh/config ~/.ssh/config
+ln -sf ~/github/hihats/dotfiles/.gitconfig ~/.gitconfig
+ln -sf ~/github/hihats/dotfiles/.gitignore_global ~/.gitignore_global
