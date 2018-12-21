@@ -27,7 +27,6 @@ alias slack='open -a "Slack.app"'
 export DATE=`date "+%Y%m%d"`
 alias touchlog='echo "#"`date "+%Y-%m"` >> ~/Dropbox/log/`date "+%Y%m"`log.md'
 alias log='atom ~/Dropbox/log/`date "+%Y%m"`log.md'
-export GEM_HOME=/Users/hihats/.rbenv/versions/2.3.1/
 
 
 
