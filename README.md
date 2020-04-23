@@ -5,7 +5,7 @@
 ```bash
 $ sudo xcodebuild -license
 # install homebrew
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 # enable brew-bundle
 $ brew tap homebrew/bundle
 ```
