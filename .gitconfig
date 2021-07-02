@@ -16,5 +16,8 @@
 	br = branch
 	ch = checkout
 	st = status
+	push-f = push --force-with-lease
+	chpick = cherry-pick
+	pushf = push --force-with-lease
 [merge]
 	tool = vimdiff
