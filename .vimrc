@@ -3,5 +3,11 @@ set termencoding=utf-8
 set encoding=utf-8
 set fileencodings=iso-2022,utf-8,cp932,euc-jp
 set number
+set autoindent
+set smartindent
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
 syntax enable
 syntax on
