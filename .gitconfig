@@ -18,3 +18,5 @@
 	st = status
 [merge]
 	tool = vimdiff
+[credential]
+	helper = osxkeychain
