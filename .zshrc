@@ -42,3 +42,7 @@ alias gitmylog='git log --author=hishats@gmail.com --since=1.months --pretty=for
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 compinit
+
+# direnv
+export EDITOR=vim
+eval "$(direnv hook zsh)"
