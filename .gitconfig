@@ -21,3 +21,5 @@
 	pushf = push --force-with-lease
 [merge]
 	tool = vimdiff
+[credential]
+	helper = osxkeychain

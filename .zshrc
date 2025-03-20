@@ -1,4 +1,5 @@
-export PATH="/opt/homebrew/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="/opt/homebrew/bin:$PYENV_ROOT/shims:$PATH"
 export GOPATH=$HOME/go
 export TERM=xterm-256color
 #eval $(gdircolors ~/dircolors-solarized)
@@ -45,3 +46,7 @@ compinit
 
 setopt +o nomatch
 
+# direnv
+export EDITOR=vim
+eval "$(direnv hook zsh)"
+>>>>>>> bf80b09f4d3ee9af7183b1424ab0874419256392
