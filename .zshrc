@@ -42,3 +42,6 @@ alias gitmylog='git log --author=hishats@gmail.com --since=1.months --pretty=for
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 compinit
+
+setopt +o nomatch
+
