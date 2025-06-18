@@ -64,8 +64,6 @@ zplug "zsh-users/zsh-syntax-highlighting"
 
 # peco/percol/fzfなどでフィルタ絞込するためのフレームワーク
 zplug "mollifier/anyframe"
-# CWべんりスクリプト
-zplug "crowdworksjp/cw-cli-tools"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -75,11 +73,3 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
-
-## functionを適当なショートカットキーにバインドする場合は以下のように設定します。
-zle -N cw-ssm-production
-zle -N cw-ssm-staging
-zle -N cw-ssm-development
-bindkey '^rmp' cw-ssm-production
-bindkey '^rms' cw-ssm-staging
-bindkey '^rmd' cw-ssm-development
