@@ -73,3 +73,7 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+cursor() {
+    open -n -a "Cursor.app" --args "$PWD"
+}
