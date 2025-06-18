@@ -2,7 +2,7 @@
 
 ## Mac OSX
 [XCode Install](https://developer.apple.com/jp/xcode/)
-```bash
+```zsh
 $ sudo xcodebuild -license
 # install homebrew
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -11,9 +11,10 @@ $ brew tap homebrew/bundle
 ```
 :warning:**brewdlerは[bundle](https://github.com/Homebrew/homebrew-bundle)にReplaceされたようです**
 
-```bash
+```zsh
 $ mkdir -p ~/github/hihats && cd ~/github/hihats
 $ git clone https://github.com/hihats/dotfiles.git
+$ git clone https://github.com/mbadolato/iTerm2-Color-Schemes
 ```
 ここではMacOS標準搭載のgitを使い、以後はbrew installしたgitを使う
 

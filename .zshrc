@@ -9,6 +9,9 @@ export HISTIGNORE='history*:pwd:la:cd:exit:vagrant ssh:top:uptime'
 export DATE=`date "+%Y%m%d"`
 #export PROMPT='%S%{$fg_bold[green]%}%{$bg[blue]%}%1~%{$reset_color%}%s%{$fg_bold[green]%}%(!.#.%%)%{$reset_color%} '
 export PROMPT='%S%1~%s%(!.#.%%) '
+HISTSIZE=10000
+SAVEHIST=10000
+setopt hist_ignore_all_dups
 
 case "${OSTYPE}" in
 darwin*)
@@ -49,3 +52,28 @@ setopt +o nomatch
 # direnv
 export EDITOR=vim
 eval "$(direnv hook zsh)"
+
+# zplugの設定
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# プライベートリポジトリのプラグインも使うのでzplugのgitをssh経由にする
+ZPLUG_PROTOCOL=ssh
+
+zplug "zsh-users/zsh-syntax-highlighting"
+
+# peco/percol/fzfなどでフィルタ絞込するためのフレームワーク
+zplug "mollifier/anyframe"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
+
+cursor() {
+    open -n -a "Cursor.app" --args "$PWD"
+}
