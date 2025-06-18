@@ -1,5 +1,5 @@
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="/opt/homebrew/bin:$PYENV_ROOT/shims:$PATH"
+export PATH="/opt/homebrew/bin:$PYENV_ROOT/shims:$HOME/.deno/bin:$PATH"
 export GOPATH=$HOME/go
 export TERM=xterm-256color
 #eval $(gdircolors ~/dircolors-solarized)
