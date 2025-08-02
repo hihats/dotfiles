@@ -58,7 +58,7 @@ export default {
   ],
   rewrite: [{
     match: () => true, // Execute rewrite on all incoming urls to make this example easier to understand
-    url: ({url}) => {
+    url: (url) => {
         const removeKeysStartingWith = ["utm_", "uta_"]; // Remove all query parameters beginning with these strings
         const removeKeys = ["fbclid", "gclid"]; // Remove all query parameters matching these keys
 
