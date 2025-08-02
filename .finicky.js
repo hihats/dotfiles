@@ -34,7 +34,7 @@ module.exports = {
         /^https?:\/\/developer.*$/,
       ],
       browser: {
-        name: "Sidekick",
+        name: "Wavebox",
         profile: "Default"
       }
     },
