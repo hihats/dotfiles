@@ -10,3 +10,4 @@ ln -sf ~/github/hihats/dotfiles/.ssh/config ~/.ssh/config
 ln -sf ~/github/hihats/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/github/hihats/dotfiles/.gitignore_global ~/.gitignore_global
 ln -sf ~/github/hihats/dotfiles/.finicky.js ~/.finicky.js
+ln -sf ~/github/hihats/dotfiles/.npmrc ~/.npmrc
