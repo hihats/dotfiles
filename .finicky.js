@@ -1,5 +1,5 @@
 // https://github.com/johnste/finicky/wiki/Configuration-ideas
-module.exports = {
+export default {
   defaultBrowser: "Brave Browser",
   handlers: [
     {
@@ -11,6 +11,7 @@ module.exports = {
         /^https?:\/\/redmine\.crowdworks\.jp\/.*$/,
         /^https?:\/\/redash.*\.crowdworks\.co\.jp\/.*$/,
         /^https?:\/\/.*\.zoom\.us\/.*$/,
+        /^https?:\/\/.*\.cursor\.com\/.*$/,
         /^https?:\/\/crowdworks\.v1\.herp\.cloud\/.*$/,
       ],
       browser: {
@@ -35,7 +36,7 @@ module.exports = {
       ],
       browser: {
         name: "Wavebox",
-        profile: "Default"
+        profile: "Work"
       }
     },
     {
