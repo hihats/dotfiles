@@ -57,14 +57,6 @@ URLを自動的に適切なブラウザで開くためのFinicky v4設定
    $ rm -rf ~/Library/Caches/se.johnste.finicky   # v4キャッシュ
    ```
 
-3. 設定ファイルの構文確認
-   - CommonJS (`module.exports`) → ESM (`export default`) に変更
-   - rewrite関数: `url: ({url}) => {}` → `url: (url) => {}` に変更
-
-**エラー確認方法:**
-- Finicky.appを起動してログを確認
-- 古いブラウザ名（Sidekick等）が残っていないかチェック
-
 ### Ruby Env
 基本はDockerで開発するが、ローカルでちょっとしたスクリプトを動かすケースなど
 ```bash
