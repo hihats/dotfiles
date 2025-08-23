@@ -63,7 +63,7 @@ ZPLUG_PROTOCOL=ssh
 zplug "zsh-users/zsh-syntax-highlighting"
 
 # peco/percol/fzfなどでフィルタ絞込するためのフレームワーク
-zplug "mollifier/anyframe"
+# zplug "mollifier/anyframe"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -77,3 +77,5 @@ zplug load
 cursor() {
     open -n -a "Cursor.app" --args "$PWD"
 }
+bindkey "^R" history-incremental-search-backward
+bindkey "^A" beginning-of-line
