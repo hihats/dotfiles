@@ -10,6 +10,5 @@ if [ ! -f "package.json" ]; then
 fi
 
 # Install packages from the install-globals script
-# cat package.json | jq -r '.globalPackages[]' | xargs npm install -g
-cat package.json | jq -r '.globalPackages[]' | xargs echo 
+cat package.json | jq -r '.globalPackages[]' | xargs npm install -g
 echo "Global npm packages installation completed"
