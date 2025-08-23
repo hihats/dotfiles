@@ -1,5 +1,5 @@
 // https://github.com/johnste/finicky/wiki/Configuration-ideas
-module.exports = {
+export default {
   defaultBrowser: "Brave Browser",
   handlers: [
     {
@@ -11,6 +11,7 @@ module.exports = {
         /^https?:\/\/redmine\.crowdworks\.jp\/.*$/,
         /^https?:\/\/redash.*\.crowdworks\.co\.jp\/.*$/,
         /^https?:\/\/.*\.zoom\.us\/.*$/,
+        /^https?:\/\/.*\.cursor\.com\/.*$/,
         /^https?:\/\/crowdworks\.v1\.herp\.cloud\/.*$/,
       ],
       browser: {
@@ -34,8 +35,8 @@ module.exports = {
         /^https?:\/\/developer.*$/,
       ],
       browser: {
-        name: "Sidekick",
-        profile: "Default"
+        name: "Wavebox",
+        profile: "Work"
       }
     },
     {
@@ -57,7 +58,7 @@ module.exports = {
   ],
   rewrite: [{
     match: () => true, // Execute rewrite on all incoming urls to make this example easier to understand
-    url: ({url}) => {
+    url: (url) => {
         const removeKeysStartingWith = ["utm_", "uta_"]; // Remove all query parameters beginning with these strings
         const removeKeys = ["fbclid", "gclid"]; // Remove all query parameters matching these keys
 

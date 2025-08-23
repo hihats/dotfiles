@@ -11,5 +11,4 @@ fi
 
 # Install packages from the install-globals script
 cat package.json | jq -r '.globalPackages[]' | xargs npm install -g
-
 echo "Global npm packages installation completed"

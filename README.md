@@ -32,6 +32,31 @@ $ sh makesymlink.sh
 ```
 :warning:**ssh/configは公開可能なものだけかチェック**
 
+### Finicky設定
+URLを自動的に適切なブラウザで開くためのFinicky v4設定
+
+設定ファイル: `.finicky.js`
+
+#### Finicky v4対応
+- ECMAScript modules (`export default`) を使用
+- 新しいURL interfaces対応
+- オンデマンド起動でリソース消費削減
+
+#### トラブルシューティング
+
+**設定変更が反映されない場合:**
+1. Finicky.appを再起動
+   ```bash
+   $ open -a Finicky
+   ```
+
+2. キャッシュクリア（古いバージョンから移行時）
+   ```bash
+   $ pkill -f finicky
+   $ rm -rf ~/Library/Caches/net.kassett.finicky  # v3キャッシュ
+   $ rm -rf ~/Library/Caches/se.johnste.finicky   # v4キャッシュ
+   ```
+
 ### Ruby Env
 基本はDockerで開発するが、ローカルでちょっとしたスクリプトを動かすケースなど
 ```bash
