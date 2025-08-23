@@ -11,3 +11,4 @@ ln -sf ~/github/hihats/dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/github/hihats/dotfiles/.gitignore_global ~/.gitignore_global
 ln -sf ~/github/hihats/dotfiles/.finicky.js ~/.finicky.js
 ln -sf ~/github/hihats/dotfiles/.npmrc ~/.npmrc
+ln -sf ~/github/hihats/dotfiles/.claude/settings.json ~/.claude/settings.json
