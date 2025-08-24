@@ -1,0 +1,63 @@
+{
+  "disableBypassPermissionsMode": "disable",
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(cp:*)",
+      "Bash(mkdir:*)",
+      "Bash(echo:*)",
+      "Bash(cat:*)",
+      "Bash(find:*)",
+      "Bash(jq:*)",
+      "Bash(git add:*)",
+      "Bash(git pull:*)",
+      "Bash(git switch:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh search issues:*)",
+      "Bash(gh issue view:*)",
+      "Bash(claude mcp:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": [
+      "_description: 特定のファイル操作を全て禁止",
+      "Read(.env*)", "Edit(.env*)", "Write(.env*)", "Bash(*:.env*)",
+      "Read(**/.env*)", "Edit(**/.env*)", "Write(**/.env*)", "Bash(*:**/.env*)",
+      "Read(.credential*)", "Edit(.credential*)", "Write(.credential*)", "Bash(*:.credential*)",
+      "Read(*.credential*)", "Edit(*.credential*)", "Write(*.credential*)", "Bash(*:*.credential*)",
+      "Read(**/.credential*)", "Edit(**/.credential*)", "Write(**/.credential*)", "Bash(*:**/.credential*)",
+      "Read(**/*.credential*)", "Edit(**/*.credential*)", "Write(**/*.credential*)", "Bash(*:**/*.credential*)",
+      "Read(.secret*)", "Edit(.secret*)", "Write(.secret*)", "Bash(*:.secret*)",
+      "Read(*.secret*)", "Edit(*.secret*)", "Write(*.secret*)", "Bash(*:*.secret*)",
+      "Read(**/.secret*)", "Edit(**/.secret*)", "Write(**/.secret*)", "Bash(*:**/.secret*)",
+      "Read(**/*.secret*)", "Edit(**/*.secret*)", "Write(**/*.secret*)", "Bash(*:**/*.secret*)",
+      "Read(master.key*)", "Edit(master.key*)", "Write(master.key*)", "Bash(*:master.key*)",
+      "Read(**/master.key*)", "Edit(**/master.key*)", "Write(**/master.key*)", "Bash(*:**/master.key*)",
+
+      "_description: 特定のディレクトリ以下の操作を全て禁止",
+      "Read(~/.aws/**)", "Edit(~/.aws/**)", "Write(~/.aws/**)", "Bash(*:~/.aws/**)",
+      "Read(**/.aws/**)", "Edit(**/.aws/**)", "Write(**/.aws/**)", "Bash(*:**/.aws/**)",
+      "Read(~/.ssh/**)", "Edit(~/.ssh/**)", "Write(~/.ssh/**)", "Bash(*:~/.ssh/**)",
+      "Read(**/.ssh/**)", "Edit(**/.ssh/**)", "Write(**/.ssh/**)", "Bash(*:**/.ssh/**)",
+      "Read(secrets/**)", "Edit(secrets/**)", "Write(secrets/**)", "Bash(*:secrets/**)",
+      "Read(**/secrets/**)", "Edit(**/secrets/**)", "Write(**/secrets/**)", "Bash(*:**/secrets/**)",
+      "Read(credentials/**)", "Edit(credentials/**)", "Write(credentials/**)", "Bash(*:credentials/**)",
+      "Read(**/credentials/**)", "Edit(**/credentials/**)", "Write(**/credentials/**)", "Bash(*:**/credentials/**)",
+      "Read(log/**)", "Edit(log/**)", "Write(log/**)", "Bash(*:log/**)",
+      "Read(**/log/**)", "Edit(**/log/**)", "Write(**/log/**)", "Bash(*:**/log/**)",
+      "Read(tmp/**)", "Edit(tmp/**)", "Write(tmp/**)", "Bash(*:tmp/**)",
+      "Read(**/tmp/**)", "Edit(**/tmp/**)", "Write(**/tmp/**)", "Bash(*:**/tmp/**)",
+      "Read(.git/**)", "Edit(.git/**)", "Write(.git/**)", "Bash(*:.git/**)",
+      "Read(**/.git/**)", "Edit(**/.git/**)", "Write(**/.git/**)", "Bash(*:**/.git/**)",
+
+      "Bash(sudo:*)",
+      "Bash(rm -rf:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(chown:*)"
+    ]
+  }
+}
