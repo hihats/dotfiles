@@ -12,6 +12,8 @@ export default {
         /^https?:\/\/redash.*\.crowdworks\.co\.jp\/.*$/,
         /^https?:\/\/.*\.zoom\.us\/.*$/,
         /^https?:\/\/.*\.cursor\.com\/.*$/,
+        /^https?:\/\/claude\.ai\/.*$/,
+        /^https?:\/\/slack\.com\/.*$/,
         /^https?:\/\/crowdworks\.v1\.herp\.cloud\/.*$/,
       ],
       browser: {
@@ -40,16 +42,16 @@ export default {
       }
     },
     {
+      match: /.*\.slack\.com/,
+      browser: 'Slack',
+    },
+    {
       match: /notion.so/,
       browser: 'Notion',
     },
     {
       match: /miro.com/,
       browser: 'Miro',
-    },
-    {
-      match: /crowdworks.slack.com/,
-      browser: 'Slack',
     },
     {
       match: "https://www.figma.com/file/*",
