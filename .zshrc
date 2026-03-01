@@ -1,5 +1,5 @@
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="/opt/homebrew/bin:$PYENV_ROOT/shims:$PATH"
+export PATH="/opt/homebrew/bin:$PYENV_ROOT/shims:$HOME/.local/bin:$PATH"
 export GOPATH=$HOME/go
 export TERM=xterm-256color
 #eval $(gdircolors ~/dircolors-solarized)
@@ -37,7 +37,7 @@ alias frequent="HISTTIMEFORMAT='' history | sed -e 's/^[ ]*//g' | cut -d' ' -f2-
 # Applications
 alias chrome='open -a "Google Chrome"'
 alias incog='open -a "Google Chrome --incognito"'
-alias slack='open -a "Slack.app"'
+#alias slack='open -a "Slack.app"'
 alias touchlog='echo "#"`date "+%Y-%m"` >> ~/Dropbox/log/`date "+%Y%m"`log.md'
 
 # git
