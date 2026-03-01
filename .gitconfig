@@ -1,17 +1,13 @@
 [core]
-	excludesfile = /Users/hihats/.gitignore_global
-	editor = vim
+	excludesfile = ~/.gitignore_global
+	editor = nvim
 [user]
 	name = Hisahiro Tsukamoto
 	email = hishats@gmail.com
 [color]
 	ui = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Users/hihats/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[diff]
+	tool = nvimdiff
 [alias]
 	br = branch
 	ch = checkout
@@ -20,7 +16,7 @@
 	chpick = cherry-pick
 	pushf = push --force-with-lease
 [merge]
-	tool = vimdiff
+	tool = nvimdiff
 [credential]
 	helper = osxkeychain
 	helper = /usr/local/share/gcm-core/git-credential-manager
