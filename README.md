@@ -57,6 +57,93 @@ URLを自動的に適切なブラウザで開くためのFinicky v4設定
    $ rm -rf ~/Library/Caches/se.johnste.finicky   # v4キャッシュ
    ```
 
+### Neovim
+Neovim + lazy.nvim 構成
+
+#### ディレクトリ構成
+
+```
+.config/nvim/
+├── init.lua                 -- エントリポイント（読み込み順序を制御）
+└── lua/
+    ├── config/
+    │   ├── options.lua      -- Vim オプション（.vimrc から移植 + 拡張）
+    │   ├── keymaps.lua      -- キーマッピング（リーダー: Space）
+    │   └── lazy.lua         -- lazy.nvim ブートストラップ
+    └── plugins/
+        ├── lsp.lua          -- LSP + Mason（サーバー自動管理）
+        ├── cmp.lua          -- blink.cmp（補完エンジン）
+        ├── treesitter.lua   -- Tree-sitter（構文解析）
+        ├── telescope.lua    -- ファジーファインダー
+        ├── ui.lua           -- カラースキーム + ステータスライン + which-key
+        ├── git.lua          -- Git 差分表示
+        └── ai.lua           -- AI コーディング支援
+```
+
+#### プラグイン一覧
+
+| プラグイン | 用途 | 備考 |
+|-----------|------|------|
+| [folke/lazy.nvim](https://github.com/folke/lazy.nvim) | プラグインマネージャ | 遅延ロード対応、`lua/plugins/` を自動スキャン |
+| [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP クライアント設定 | `gd`, `gr`, `K`, `<leader>ca` 等のキーマップ付き |
+| [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) | LSP サーバー管理 | `lua_ls`, `ts_ls`, `pyright` を自動インストール |
+| [saghen/blink.cmp](https://github.com/saghen/blink.cmp) | 補完エンジン | nvim-cmp の後継、Rust 製で高速 |
+| [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | シンタックスハイライト | 高精度な構文解析ベースのハイライト + インデント |
+| [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | ファジーファインダー | fzf-native 拡張で高速ソート |
+| [folke/tokyonight.nvim](https://github.com/folke/tokyonight.nvim) | カラースキーム | night スタイル |
+| [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | ステータスライン | モード / ファイル名 / Git / 診断を表示 |
+| [folke/which-key.nvim](https://github.com/folke/which-key.nvim) | キーバインド表示 | リーダーキー押下後に候補をポップアップ |
+| [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git 差分表示 | signcolumn に追加/変更/削除を表示 |
+| [yetone/avante.nvim](https://github.com/yetone/avante.nvim) | AI コーディング支援 | Claude 連携（`ANTHROPIC_API_KEY` 環境変数が必要） |
+
+#### 主要キーマップ
+
+| キー | モード | 動作 |
+|------|--------|------|
+| `Space` | - | リーダーキー |
+| `<leader>ff` | Normal | ファイル検索 (Telescope) |
+| `<leader>fg` | Normal | テキスト検索 (live grep) |
+| `<leader>fb` | Normal | バッファ一覧 |
+| `<leader>fr` | Normal | 最近のファイル |
+| `<leader>/` | Normal | バッファ内検索 |
+| `gd` | Normal | 定義へジャンプ (LSP) |
+| `gr` | Normal | 参照一覧 (LSP) |
+| `K` | Normal | ホバー情報 (LSP) |
+| `<leader>ca` | Normal | コードアクション (LSP) |
+| `<leader>rn` | Normal | リネーム (LSP) |
+| `]h` / `[h` | Normal | 次/前の Git hunk |
+| `<leader>gb` | Normal | Git blame |
+| `C-h/j/k/l` | Normal | ウィンドウ移動 |
+| `S-h` / `S-l` | Normal | 前/次のバッファ |
+| `J` / `K` | Visual | 行を上下に移動 |
+
+#### ヘルスチェック
+
+```bash
+$ nvim
+:checkhealth          # 全体の環境確認
+:Lazy                 # プラグイン管理画面
+:Mason                # LSP サーバー管理画面
+```
+
+#### LSP サーバーの追加
+
+`plugins/lsp.lua` の `ensure_installed` にサーバー名を追加すると Mason が自動インストール:
+
+```lua
+ensure_installed = {
+  "lua_ls",
+  "ts_ls",
+  "pyright",
+  "gopls",         -- 追加例: Go
+  "rust_analyzer", -- 追加例: Rust
+},
+```
+
+利用可能なサーバー一覧: `:Mason` で確認、または [mason-lspconfig README](https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers) を参照。
+
+---
+
 ### Ruby Env
 基本はDockerで開発するが、ローカルでちょっとしたスクリプトを動かすケースなど
 ```bash
