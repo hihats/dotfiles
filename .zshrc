@@ -27,8 +27,9 @@ esac
 alias rm='rm -i'
 
 # frequently used command
-alias bashrc='vim ~/.bashrc'
-alias sshconf='vim ~/.ssh/config'
+alias bashrc='nvim ~/.zshrc'
+alias sshconf='nvim ~/.ssh/config'
+alias nv='nvim'
 alias dl='open ~/Downloads/'
 alias dcbuild='docker-compose build'
 alias dcps='docker-compose ps'
@@ -42,6 +43,7 @@ alias touchlog='echo "#"`date "+%Y-%m"` >> ~/Dropbox/log/`date "+%Y%m"`log.md'
 
 # git
 alias gitmylog='git log --author=hishats@gmail.com --since=1.months --pretty=format:"%cd : %s" --no-merges'
+alias codebases='git ls-files | grep -v '__snapshots__' | cloc --list-file=-'
 ### AWS
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
@@ -50,7 +52,7 @@ compinit
 setopt +o nomatch
 
 # direnv
-export EDITOR=vim
+export EDITOR=nvim
 eval "$(direnv hook zsh)"
 
 # zplugの設定
@@ -79,3 +81,9 @@ cursor() {
 }
 bindkey "^R" history-incremental-search-backward
 bindkey "^A" beginning-of-line
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/hisahiro.tsukamoto/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/hisahiro.tsukamoto/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/hisahiro.tsukamoto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hisahiro.tsukamoto/google-cloud-sdk/completion.zsh.inc'; fi
