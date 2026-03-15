@@ -13,8 +13,9 @@ export default {
         /^https?:\/\/.*\.zoom\.us\/.*$/,
         /^https?:\/\/.*\.cursor\.com\/.*$/,
         /^https?:\/\/claude\.ai\/.*$/,
+        /^https?:\/\/.*\.anthropic\.com\/.*$/,
         /^https?:\/\/slack\.com\/.*$/,
-        /^https?:\/\/crowdworks\.v1\.herp\.cloud\/.*$/,
+        /^https?:\/\/.*\.v1\.herp\.cloud\/.*$/,
       ],
       browser: {
         name: "Google Chrome",
