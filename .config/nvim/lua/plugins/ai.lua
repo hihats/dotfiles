@@ -13,8 +13,10 @@ return {
     },
     opts = {
       provider = "claude",
-      claude = {
-        model = "claude-sonnet-4-6",
+      providers = {
+        claude = {
+          model = "claude-sonnet-4-6",
+        },
       },
     },
   },
