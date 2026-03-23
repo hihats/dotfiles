@@ -10,4 +10,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   * In test code, write What
   * In commit logs, write Why
   * In code comments, write Why not
-
+- At the end of the response, explicitly state whether there were any signs of sycophancy
