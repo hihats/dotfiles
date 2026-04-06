@@ -25,6 +25,7 @@ brew 'peco'
 brew 'circleci'
 brew 'yarn'
 brew 'pipenv'
+brew 'poppler'
 #brew 'minamijoyo/myaws/myaws'
 
 cask 'iterm2'
