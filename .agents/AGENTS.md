@@ -10,6 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   * In test code, write What
   * In commit logs, write Why
   * In code comments, write Why not
+- Check to see if there are any inconsistencies with previous conversations, and if there are, be honest about them
 - At the end of the response, explicitly state whether there were any signs of sycophancy
 
 ## Recommend
