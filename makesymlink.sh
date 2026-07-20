@@ -14,7 +14,6 @@ ln -sf ~/github/hihats/dotfiles/.npmrc ~/.npmrc
 ln -sf ~/github/hihats/dotfiles/.claude/settings.json ~/.claude/settings.json
 mkdir -p ~/.agents
 ln -sf ~/github/hihats/dotfiles/.agents/AGENTS.md ~/.agents/AGENTS.md
-ln -sf ~/.agents/AGENTS.md ~/.claude/CLAUDE.md
 
 # Neovim
 mkdir -p ~/.config
