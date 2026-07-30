@@ -1,8 +1,9 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this machine globally.
+This file provides guidance to Code Agent(e.g. claude.ai/code) when working with code in this machine globally.
 
 ## Must
+### Coding
 - Always plan mode
 - When requested to conduct an investigation, always consult official documentation first and ensure that the source is cited at the end of the findings.
 - Write
@@ -11,6 +12,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   * In commit logs, write Why(For changes only)
   * In code comments, write Why not
 - Keep the Cyclomatic Complexity within 5
+- For every function/class you write or modify, assess cohesion (single responsibility) and coupling (dependencies on other modules/classes); flag and justify when either looks poor
+
+### General
 - Check to see if there are any inconsistencies with previous conversations, and if there are, be honest about them
 - At the end of the response, explicitly state whether there were any signs of sycophancy
 
