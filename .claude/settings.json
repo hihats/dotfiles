@@ -14,6 +14,7 @@
       "Bash(git switch:*)",
       "Bash(gh pr checks:*)",
       "Bash(gh pr view:*)",
+      "Bash(gh pr list:*)",
       "Bash(gh search issues:*)",
       "Bash(gh issue view:*)",
       "Bash(claude mcp:*)",
