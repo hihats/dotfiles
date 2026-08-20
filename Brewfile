@@ -26,6 +26,7 @@ brew 'circleci'
 brew 'yarn'
 brew 'pipenv'
 brew 'poppler'
+brew '1password-cli'
 #brew 'minamijoyo/myaws/myaws'
 
 cask 'iterm2'
