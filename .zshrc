@@ -3,8 +3,6 @@ export GOPATH=$HOME/go
 export TERM=xterm-256color
 #eval $(gdircolors ~/dircolors-solarized)
 export GREP_OPTIONS="--color=auto"
-export HISTTIMEFORMAT='%y/%m/%d %H:%M:%S '
-export HISTIGNORE='history*:pwd:la:cd:exit:vagrant ssh:top:uptime'
 export DATE=`date "+%Y%m%d"`
 #export PROMPT='%S%{$fg_bold[green]%}%{$bg[blue]%}%1~%{$reset_color%}%s%{$fg_bold[green]%}%(!.#.%%)%{$reset_color%} '
 export PROMPT='%S%1~%s%(!.#.%%) '
@@ -51,7 +49,6 @@ compinit
 setopt +o nomatch
 
 # direnv
-export EDITOR=nvim
 eval "$(direnv hook zsh)"
 
 # zplugの設定
