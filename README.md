@@ -32,6 +32,18 @@ $ sh makesymlink.sh
 ```
 :warning:**ssh/configは公開可能なものだけかチェック**
 
+### Takumi Guard Key（npm/uvのパッケージ取得プロキシ）
+`npm`・`uv`は[Takumi Guard](https://shisho.dev/docs/t/guard/quickstart/)（悪性パッケージをブロックするnpm/PyPI向けセキュリティプロキシ）経由でパッケージを取得する設定になっている。認証トークンはリポジトリに含めていないので、初回セットアップ時に各自で用意する。
+
+1. Takumi Guardでトークンを発行する
+2. `~/.zshenv.local`（gitignore対象、リポジトリには含まれないファイル）を作成し、発行したトークンを設定する
+   ```sh
+   export TAKUMI_GUARD_TOKEN="発行したトークン"
+   ```
+3. 新しいシェルを開くと反映される（`.npmrc`の`_authToken`、`.zshenv`の`UV_DEFAULT_INDEX`がこの値を参照する）
+
+:warning:**`~/.zshenv.local`はgitignore対象。トークンを直接`.npmrc`や`.zshenv`に書き込まないこと**
+
 ### Finicky設定
 URLを自動的に適切なブラウザで開くためのFinicky v4設定
 
