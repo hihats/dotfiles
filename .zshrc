@@ -9,6 +9,8 @@ export PROMPT='%S%1~%s%(!.#.%%) '
 HISTSIZE=10000
 SAVEHIST=10000
 setopt hist_ignore_all_dups
+setopt +o nomatch
+setopt autonamedirs
 
 case "${OSTYPE}" in
 darwin*)
@@ -41,12 +43,15 @@ alias touchlog='echo "#"`date "+%Y-%m"` >> ~/Dropbox/log/`date "+%Y%m"`log.md'
 # git
 alias gitmylog='git log --author=hishats@gmail.com --since=1.months --pretty=format:"%cd : %s" --no-merges'
 alias codebases='git ls-files | grep -v '__snapshots__' | cloc --list-file=-'
+
+hash -d dotfiles=~/github/hihats/dotfiles
+hash -d claude_agent_sessions=~/Library/Application\ Support/Claude/local-agent-mode-sessions
+
 ### AWS
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 compinit
 
-setopt +o nomatch
 
 # direnv
 eval "$(direnv hook zsh)"
