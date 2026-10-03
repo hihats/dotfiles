@@ -32,6 +32,8 @@ $ sh makesymlink.sh
 ```
 :warning:**ssh/configは公開可能なものだけかチェック**
 
+Claude Codeの自作スキル（`.claude/skills/`配下、例: バックログをINVEST/SMARTで判定する`invest`）も同じスクリプトで`~/.claude/skills/`へsymlinkされる。
+
 ### Takumi Guard Key（npm/uvのパッケージ取得プロキシ）
 `npm`・`uv`は[Takumi Guard](https://shisho.dev/docs/t/guard/quickstart/)（悪性パッケージをブロックするnpm/PyPI向けセキュリティプロキシ）経由でパッケージを取得する設定になっている。認証トークンはリポジトリに含めていないので、初回セットアップ時に各自で用意する。
 

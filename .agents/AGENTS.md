@@ -14,6 +14,9 @@ This file provides guidance to Code Agent(e.g. claude.ai/code) when working with
 - Keep the Cyclomatic Complexity within 5
 - For every function/class you write or modify, assess cohesion (single responsibility) and coupling (dependencies on other modules/classes); flag and justify when either looks poor
 
+### Design and Planning
+- Product Backlog Items must satisfy INVEST; tasks must satisfy SMART. Use the `invest` skill when creating, splitting, or reviewing them
+
 ### General
 - Check to see if there are any inconsistencies with previous conversations, and if there are, be honest about them
 - At the end of the response, explicitly state whether there were any signs of sycophancy
