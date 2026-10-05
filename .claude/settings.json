@@ -11,6 +11,7 @@
       "Bash(jq:*)",
       "Bash(git add:*)",
       "Bash(git pull:*)",
+      "Bash(git push:*)",
       "Bash(git switch:*)",
       "Bash(gh pr checks:*)",
       "Bash(gh pr view:*)",
@@ -75,6 +76,7 @@
       "Edit(.git/**)",
       "Read(**/.git/**)",
       "Edit(**/.git/**)",
+      "Bash(git push -f:*)",
       "Bash(git branch -D:*)",
       "Bash(sudo:*)",
       "Bash(rm -rf:*)",
@@ -84,7 +86,6 @@
       "Bash(chown:*)"
     ]
   },
-  "model": "sonnet",
   "alwaysThinkingEnabled": true,
   "tui": "default",
   "editorMode": "vim",
