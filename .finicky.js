@@ -13,6 +13,7 @@ export default {
         /^https?:\/\/.*\.zoom\.us\/.*$/,
         /^https?:\/\/.*\.cursor\.com\/.*$/,
         /^https?:\/\/claude\.ai\/.*$/,
+        /^https?:\/\/claude\.com\/.*$/,
         /^https?:\/\/.*\.anthropic\.com\/.*$/,
         /^https?:\/\/slack\.com\/.*$/,
         /^https?:\/\/.*\.v1\.herp\.cloud\/.*$/,
