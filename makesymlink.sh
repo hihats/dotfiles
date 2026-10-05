@@ -23,3 +23,6 @@ ln -sfn ~/github/hihats/dotfiles/.claude/skills/invest ~/.claude/skills/invest
 # Neovim
 mkdir -p ~/.config
 ln -sfn ~/github/hihats/dotfiles/.config/nvim ~/.config/nvim
+
+# direnv
+ln -sfn ~/github/hihats/dotfiles/.config/direnv ~/.config/direnv

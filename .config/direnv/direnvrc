@@ -1,0 +1,9 @@
+# uvプロジェクトの.venvをPATH先頭に載せる
+# activateをsourceしないのは、direnvがPATHの巻き戻しを自前で管理するため
+layout_uv() {
+  if [[ ! -d .venv ]]; then
+    uv venv
+  fi
+  export VIRTUAL_ENV="$PWD/.venv"
+  PATH_add "$VIRTUAL_ENV/bin"
+}

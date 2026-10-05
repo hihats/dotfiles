@@ -168,9 +168,32 @@ rbenv exec gem install bundler
 ```
 
 ### Python Env
+pyenvとuvを併用する。役割は分けてあり、片方がもう片方を置き換えることはない。
+
+| 用途 | 使うもの |
+| --- | --- |
+| リポジトリ外でちょっとしたスクリプトを動かす、素の`python`を叩く | pyenv |
+| Pythonプロジェクトの開発（依存・仮想環境・Python本体） | uv |
+
+#### なぜpyenvを残すか
+pyenvはshimをPATHに置くので、ディレクトリを移動するだけで素の`python`が`.python-version`に追従する。uvはshimを持たず、`.python-version`を読むのは`uv run`・`uv venv`・`uv sync`などのuvコマンドの中だけなので、この挙動は代替できない。そのためグローバルのPythonはpyenvに任せたままにしている。
+
+#### uvプロジェクトのセットアップ
+uvが使うPython本体はuv管理のもの（`~/.local/share/uv/python`配下）で、pyenvの導入状況には依存しない。プロジェクトに`.envrc`を置くと、direnvが`.venv`をPATH先頭に載せるので、素の`python`や`pytest`がそのまま通る。
+
+```bash
+cd path/to/project
+uv init                  # 既存プロジェクトなら不要
+echo 'layout uv' > .envrc
+direnv allow
+which python             # => path/to/project/.venv/bin/python
 ```
-pip install pylama pylama-pylint
-```
+
+`layout uv`の実体は`.config/direnv/direnvrc`の`layout_uv`で、`.venv`が無ければ`uv venv`で作ってからPATHに追加する。
+
+:warning:**`.envrc`を置かずに素の`python`を叩くと、pyenvのshimがプロジェクトの`.python-version`を読みに行き、そのバージョンがpyenv側に無いと`pyenv: version 'X' is not installed`で失敗する。** `.envrc`を置くか、`uv run python ...`の形で実行する。
+
+パッケージの取得は[Takumi Guard](#takumi-guard-keynpmuvのパッケージ取得プロキシ)経由になる（`.zshenv`の`UV_DEFAULT_INDEX`）。
 
 ### atom
 [sync setting](https://github.com/atom-community/sync-settings)で設定を同期
