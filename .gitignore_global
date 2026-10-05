@@ -4,3 +4,4 @@
 *.iml
 tmp/*
 **/.claude/settings.local.json
+**/.claude/worktrees/

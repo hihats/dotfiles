@@ -19,7 +19,12 @@ mkdir -p ~/.agents
 ln -sf ~/github/hihats/dotfiles/.agents/AGENTS.md ~/.agents/AGENTS.md
 mkdir -p ~/.claude/skills
 ln -sfn ~/github/hihats/dotfiles/.claude/skills/invest ~/.claude/skills/invest
+mkdir -p ~/.claude/rules
+ln -sf ~/github/hihats/dotfiles/.claude/rules/worktree.md ~/.claude/rules/worktree.md
 
 # Neovim
 mkdir -p ~/.config
 ln -sfn ~/github/hihats/dotfiles/.config/nvim ~/.config/nvim
+
+# direnv
+ln -sfn ~/github/hihats/dotfiles/.config/direnv ~/.config/direnv
