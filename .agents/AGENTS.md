@@ -39,3 +39,7 @@ This file provides guidance to Code Agent(e.g. claude.ai/code) when working with
 - pyenv is the global Python (bare `python` outside projects); uv is the per-project tool. They coexist by design — do not propose removing pyenv or changing its global settings
 - Inside a uv project, run via `uv run` or the direnv-activated `.venv`. Never `pip install` into the global interpreter
 - Leave uv's Python to uv's own managed installations; do not set `python-preference`, `uv python pin --global`, or `uv python install --default`
+- When creating a uv project, add `.envrc` containing `layout uv` (defined in `.config/direnv/direnvrc`) so bare `python` resolves to `.venv` instead of a pyenv shim
+
+## Tool-specific rules
+- Claude Code: tool-specific instructions live in `~/.claude/rules/` (managed in this repo's `.claude/rules/`), e.g. `worktree.md` for when to use `EnterWorktree` vs `git worktree add`. They load every session alongside this file
