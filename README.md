@@ -179,7 +179,7 @@ pyenvとuvを併用する。役割は分けてあり、片方がもう片方を�
 pyenvはshimをPATHに置くので、ディレクトリを移動するだけで素の`python`が`.python-version`に追従する。uvはshimを持たず、`.python-version`を読むのは`uv run`・`uv venv`・`uv sync`などのuvコマンドの中だけなので、この挙動は代替できない。そのためグローバルのPythonはpyenvに任せたままにしている。
 
 #### uvプロジェクトのセットアップ
-uvが使うPython本体はuv管理のもの（`~/.local/share/uv/python`配下）で、pyenvの導入状況には依存しない。プロジェクトに`.envrc`を置くと、direnvが`.venv`をPATH先頭に載せるので、素の`python`や`pytest`がそのまま通る。
+uvは既定でuv管理のPython（`~/.local/share/uv/python`配下）を優先する。ただし互換するuv管理版が無い場合は、ダウンロードより先にpyenvで入れたPythonなど既存のPythonを使う。uv管理版を確実に使うなら`uv python install <version>`で入れておく。プロジェクトに`.envrc`を置くと、direnvが`.venv`をPATH先頭に載せるので、素の`python`や`pytest`がそのまま通る。
 
 ```bash
 cd path/to/project
