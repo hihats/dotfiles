@@ -2,7 +2,7 @@
 # activateをsourceしないのは、direnvがPATHの巻き戻しを自前で管理するため
 layout_uv() {
   if [[ ! -d .venv ]]; then
-    uv venv
+    uv venv || return
   fi
   export VIRTUAL_ENV="$PWD/.venv"
   PATH_add "$VIRTUAL_ENV/bin"
