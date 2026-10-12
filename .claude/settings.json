@@ -19,6 +19,7 @@
       "Bash(gh search issues:*)",
       "Bash(gh issue view:*)",
       "Bash(claude mcp:*)",
+      "Bash(curl -s http://0.0.0.0:8080/)",
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:github.com)"
