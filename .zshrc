@@ -88,3 +88,6 @@ if [ -f '/Users/hisahiro.tsukamoto/google-cloud-sdk/path.zsh.inc' ]; then . '/Us
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/hisahiro.tsukamoto/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/hisahiro.tsukamoto/google-cloud-sdk/completion.zsh.inc'; fi
+
+# nodenv
+eval "$(nodenv init -)"
