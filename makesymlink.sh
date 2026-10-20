@@ -21,6 +21,10 @@ mkdir -p ~/.claude/skills
 ln -sfn ~/github/hihats/dotfiles/.claude/skills/invest ~/.claude/skills/invest
 mkdir -p ~/.claude/rules
 ln -sf ~/github/hihats/dotfiles/.claude/rules/worktree.md ~/.claude/rules/worktree.md
+ln -sf ~/github/hihats/dotfiles/.claude/rules/claims.md ~/.claude/rules/claims.md
+# hooksはディレクトリごとではなくファイル単位で張る。herdrが同じディレクトリに自前のフックを再インストールするため
+mkdir -p ~/.claude/hooks
+ln -sf ~/github/hihats/dotfiles/.claude/hooks/meta-review-precompact.sh ~/.claude/hooks/meta-review-precompact.sh
 
 # Neovim
 mkdir -p ~/.config

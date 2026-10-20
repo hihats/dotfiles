@@ -95,10 +95,48 @@
       "Bash(chown:*)"
     ]
   },
+  "model": "fable",
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": "manual",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.claude/hooks/meta-review-precompact.sh block",
+            "timeout": 10,
+            "statusMessage": "meta-review の実施状況を確認中..."
+          }
+        ]
+      },
+      {
+        "matcher": "auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.claude/hooks/meta-review-precompact.sh preserve",
+            "timeout": 30,
+            "statusMessage": "ユーザー発言を退避中..."
+          }
+        ]
+      }
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "ocp-harness": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/hisahiro.tsukamoto/Documents/Claude/Projects/エージェント整備/ocp-harness"
+      }
+    }
+  },
   "alwaysThinkingEnabled": true,
   "tui": "default",
   "editorMode": "vim",
   "verbose": true,
   "remoteControlAtStartup": true,
-  "disableBypassPermissionsMode": true
+  "disableBypassPermissionsMode": true,
+  "enabledPlugins": {
+    "ocp-guard@ocp-harness": true
+  }
 }
