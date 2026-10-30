@@ -41,5 +41,11 @@ This file provides guidance to Code Agent(e.g. claude.ai/code) when working with
 - Leave uv's Python to uv's own managed installations; do not set `python-preference`, `uv python pin --global`, or `uv python install --default`
 - When creating a uv project, add `.envrc` containing `layout uv` (defined in `.config/direnv/direnvrc`) so bare `python` resolves to `.venv` instead of a pyenv shim
 
+### Node
+- Homebrew `node` is the global Node; nodenv serves only directories with a `.node-version`. They coexist by design — keep `nodenv global` at `system` and do not propose replacing one with the other
+- Before changing any Node version (upgrade, install, pin), run `./check-node-versions.sh` in this repo and act on its `Actions` list. It only reports; it never upgrades or installs
+- If `nodenv install X` fails with "definition not found", run `brew upgrade node-build` first; its definition list lags behind nodejs.org
+- A project pinning an EOL line needs its `.node-version` changed in that project's repo, not here
+
 ## Tool-specific rules
 - Claude Code: tool-specific instructions live in `~/.claude/rules/` (managed in this repo's `.claude/rules/`), e.g. `worktree.md` for when to use `EnterWorktree` vs `git worktree add`. They load every session alongside this file

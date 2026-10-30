@@ -195,6 +195,41 @@ which python             # => path/to/project/.venv/bin/python
 
 パッケージの取得は[Takumi Guard](#takumi-guard-keynpmuvのパッケージ取得プロキシ)経由になる（`.zshenv`の`UV_DEFAULT_INDEX`）。
 
+### Node Env
+グローバルのnodeはHomebrewの`node`（`/opt/homebrew/bin/node`）。nodenvはプロジェクトの`.node-version`に従うためのもので、`nodenv global`は`system`のままにしてHomebrew版へ委譲している。両者は共存させる。
+
+:warning:**`.node-version`を持つディレクトリでは、nodenvのshimがそのバージョンを要求する。nodenv側に入っていないと`nodenv: version 'X' is not installed`で失敗する**（pyenvと同じ挙動）。
+
+#### セキュリティリリース時の点検
+Node.jsのセキュリティリリース（[公式アナウンス](https://nodejs.org/en/blog/vulnerability)）が出たら、このMac上のNode実体とピン留めをまとめて点検する。
+
+```bash
+./check-node-versions.sh                 # このMacの実体と ~/github 配下のピンを点検
+./check-node-versions.sh 22.23.4 26.7.0  # 任意のバージョンを追加で判定
+```
+
+点検対象: Homebrewの`node`/`node@N`、`~/.nodenv/versions`、PATH上のその他のnode、asdfの`nodejs`、`~/github`配下（深さ3）の`.node-version`/`.nvmrc`/`.tool-versions`。Cursor同梱やuvキャッシュ内のnodeはアプリ側が更新するので参考表示のみ。
+
+判定は[nodejs.org/dist/index.json](https://nodejs.org/dist/index.json)の`security`フラグと[リリーススケジュール](https://github.com/nodejs/Release/blob/main/schedule.json)に基づく。
+
+| STATUS | 意味 | exit code |
+| --- | --- | --- |
+| OK | 系列の最新 | 0 |
+| OUTDATED | 最新ではないがセキュリティ修正版以上 | 0 |
+| NEEDS_UPDATE | その系列の最新セキュリティ修正版より古い | 1 |
+| EOL | 系列のサポートが終了 | 1 |
+| UNRESOLVED | `lts/*`など x.y.z 形式でないピン。手で確認 | 0 |
+
+スクリプトは修復しない。末尾の`Actions`に出るコマンドを確認して実行する。
+
+```bash
+brew upgrade node                     # Homebrew版
+brew upgrade node-build               # nodenvが新しい版を知らない（definition not found）とき
+nodenv install 22.23.4                # ピン留めされた系列の修正版
+```
+
+EOL系列をピン留めしているプロジェクトは、そのリポジトリ側で`.node-version`をサポート中の系列へ更新する必要がある。
+
 ### atom
 [sync setting](https://github.com/atom-community/sync-settings)で設定を同期
 - Copy the access token to Sync Settings configuration.(別保管)
