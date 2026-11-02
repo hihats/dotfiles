@@ -1,0 +1,22 @@
+# Codex CLI user config. makesymlink.sh links this to ~/.codex/config.toml.
+# Codex writes here too (project trust entries, `codex mcp add`); that is expected,
+# the same way Claude's /config writes into the symlinked .claude/settings.json.
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+# Must stay top-level: under [project] it is ignored (openai/codex#22454).
+project_doc_fallback_filenames = ["CLAUDE.md"]
+
+[sandbox_workspace_write]
+network_access = false
+
+[tui]
+vim_mode_default = true
+notifications = true
+
+[history]
+persistence = "save-all"
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp"]

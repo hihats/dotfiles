@@ -1,0 +1,94 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"$HOME\"/.codex/instructions/*.md 2>/dev/null || true",
+            "timeout": 5,
+            "statusMessage": "Loading shared rules from ~/.codex/instructions/"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/hisahiro.tsukamoto/.config/iterm2/cc-status"
+          }
+        ]
+      }
+    ]
+  }
+}

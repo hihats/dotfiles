@@ -1,0 +1,108 @@
+# Command policy for Codex CLI, mirroring the Bash allow/deny list in .claude/settings.json.
+# makesymlink.sh links this to ~/.codex/rules/dotfiles.rules (default.rules is left to the
+# TUI's "always allow" writes). Rules are prefix matches only, so a flag placed after other
+# arguments (e.g. `git push origin --force`) is not caught here; the Claude globs were wider.
+# Reads of secrets (.env, credentials, ...) have no equivalent in sandbox_mode; see README.
+# Validate: codex execpolicy check --rules .codex/rules/dotfiles.rules -- <command>
+# `match` / `not_match` are checked when the file loads, so a wrong rule fails at startup.
+
+# --- read-only / low-risk commands: run without prompting ---
+prefix_rule(
+    pattern = ["ls"],
+    decision = "allow",
+    match = ["ls -la"],
+)
+prefix_rule(
+    pattern = ["cat"],
+    decision = "allow",
+    match = ["cat README.md"],
+)
+prefix_rule(
+    pattern = ["find"],
+    decision = "allow",
+    match = ["find . -name '*.md'"],
+)
+prefix_rule(
+    pattern = ["jq"],
+    decision = "allow",
+    match = ["jq -r .cwd"],
+)
+prefix_rule(
+    pattern = ["mkdir"],
+    decision = "allow",
+    match = ["mkdir -p build"],
+)
+prefix_rule(
+    pattern = ["cp"],
+    decision = "allow",
+    match = ["cp a b"],
+)
+prefix_rule(
+    pattern = ["echo"],
+    decision = "allow",
+    match = ["echo hi"],
+)
+prefix_rule(
+    pattern = ["git", ["add", "switch", "pull"]],
+    decision = "allow",
+    match = ["git add -A", "git switch -c topic", "git pull --rebase"],
+    not_match = ["git commit -m x"],
+)
+prefix_rule(
+    pattern = ["gh", "pr", ["view", "list", "checks"]],
+    decision = "allow",
+    match = ["gh pr view 1", "gh pr list --state open", "gh pr checks 1"],
+    not_match = ["gh pr merge 1"],
+)
+prefix_rule(
+    pattern = ["gh", "issue", "view"],
+    decision = "allow",
+    match = ["gh issue view 1"],
+    not_match = ["gh issue close 1"],
+)
+prefix_rule(
+    pattern = ["gh", "search", "issues"],
+    decision = "allow",
+    match = ["gh search issues bug"],
+)
+
+# --- destructive or network commands: refuse outright ---
+prefix_rule(
+    pattern = ["sudo"],
+    decision = "forbidden",
+    justification = "No privilege escalation from an agent session",
+    match = ["sudo ls"],
+)
+prefix_rule(
+    pattern = ["rm", ["-rf", "-fr", "-r", "-R"]],
+    decision = "forbidden",
+    justification = "Recursive delete; remove files by hand instead",
+    match = ["rm -rf build", "rm -r build"],
+    not_match = ["rm build/out.txt"],
+)
+prefix_rule(
+    pattern = ["chown"],
+    decision = "forbidden",
+    justification = "Ownership changes are never needed in project work",
+    match = ["chown -R me ."],
+)
+prefix_rule(
+    pattern = [["curl", "wget", "nc"]],
+    decision = "forbidden",
+    justification = "Network fetches go through the tool's own fetch, not the shell",
+    match = ["curl -s http://example.com", "wget http://example.com", "nc -l 8080"],
+)
+prefix_rule(
+    pattern = ["git", "branch", "-D"],
+    decision = "forbidden",
+    justification = "Force-delete of a branch loses unmerged work",
+    match = ["git branch -D topic"],
+    not_match = ["git branch -d topic"],
+)
+prefix_rule(
+    pattern = ["git", "push", ["-f", "--force", "--force-with-lease", "-d", "--delete", "--mirror", "--prune"]],
+    decision = "forbidden",
+    justification = "Force, delete, mirror and prune pushes rewrite or remove remote history",
+    match = ["git push -f origin main", "git push --force origin main", "git push --delete origin topic", "git push --mirror"],
+    not_match = ["git push origin main"],
+)
