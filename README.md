@@ -45,7 +45,7 @@ hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へ
 | ファイル | 役割 |
 |---|---|
 | `.codex/config.toml` | 承認ポリシー（`on-request`）、sandbox（`workspace-write`、ネットワーク無効）、`CLAUDE.md`しかないリポジトリ向けのフォールバック、MCP（context7） |
-| `.codex/hooks.json` | iTerm2のステータス連携（`cc-status`）と、`SessionStart`で`~/.codex/instructions/*.md`（共有ルール）を文脈に流す仕組み |
+| `.codex/hooks.json` | `SessionStart`で`~/.codex/instructions/*.md`（共有ルール）を文脈に流す仕組み。iTerm2のSession Status連携（`cc-status --agent codex`、iTerm2 3.7.5以降）は入れていない |
 | `.codex/rules/dotfiles.rules` | コマンドの許可/禁止。`.claude/settings.json`のBash allow/denyを前方一致ルールに写したもの。`codex execpolicy check --rules .codex/rules/dotfiles.rules -- <コマンド>`で確認できる |
 
 Claude Codeとの差分:
