@@ -26,11 +26,13 @@ mkdir -p ~/.claude/hooks
 ln -sf ~/github/hihats/dotfiles/.claude/hooks/inject-review-practices.sh ~/.claude/hooks/inject-review-practices.sh
 
 # Codex CLI: same AGENTS.md as Claude; tool-neutral skills/rules live in .agents/
+# Sources live in codex/, not .codex/: Codex loads <repo>/.codex/ as a trusted project layer
+# on top of ~/.codex/, so the symlinked files would be read twice when working in this repo.
 mkdir -p ~/.codex/rules ~/.codex/instructions ~/.agents/skills
 ln -sf ~/github/hihats/dotfiles/.agents/AGENTS.md ~/.codex/AGENTS.md
-ln -sf ~/github/hihats/dotfiles/.codex/config.toml ~/.codex/config.toml
-ln -sf ~/github/hihats/dotfiles/.codex/hooks.json ~/.codex/hooks.json
-ln -sf ~/github/hihats/dotfiles/.codex/rules/dotfiles.rules ~/.codex/rules/dotfiles.rules
+ln -sf ~/github/hihats/dotfiles/codex/config.toml ~/.codex/config.toml
+ln -sf ~/github/hihats/dotfiles/codex/hooks.json ~/.codex/hooks.json
+ln -sf ~/github/hihats/dotfiles/codex/rules/dotfiles.rules ~/.codex/rules/dotfiles.rules
 ln -sf ~/github/hihats/dotfiles/.agents/rules/claims.md ~/.codex/instructions/claims.md
 ln -sfn ~/github/hihats/dotfiles/.agents/skills/invest ~/.agents/skills/invest
 

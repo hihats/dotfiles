@@ -1,9 +1,10 @@
 # Command policy for Codex CLI, mirroring the Bash allow/deny list in .claude/settings.json.
+# Kept under codex/ rather than .codex/ so Codex does not also load it as a project layer here.
 # makesymlink.sh links this to ~/.codex/rules/dotfiles.rules (default.rules is left to the
 # TUI's "always allow" writes). Rules are prefix matches only, so a flag placed after other
 # arguments (e.g. `git push origin --force`) is not caught here; the Claude globs were wider.
 # Reads of secrets (.env, credentials, ...) have no equivalent in sandbox_mode; see README.
-# Validate: codex execpolicy check --rules .codex/rules/dotfiles.rules -- <command>
+# Validate: codex execpolicy check --rules codex/rules/dotfiles.rules -- <command>
 # `match` / `not_match` are checked when the file loads, so a wrong rule fails at startup.
 
 # --- read-only / low-risk commands: run without prompting ---
