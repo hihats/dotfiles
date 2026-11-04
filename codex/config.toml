@@ -6,13 +6,19 @@ approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 # Must stay top-level: under [project] it is ignored (openai/codex#22454).
 project_doc_fallback_filenames = ["CLAUDE.md"]
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
 
 [sandbox_workspace_write]
-network_access = false
+network_access = true
 
 [tui]
 vim_mode_default = true
 notifications = true
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+"gpt-6.1-sol" = 4
 
 [history]
 persistence = "save-all"
@@ -20,3 +26,17 @@ persistence = "save-all"
 [mcp_servers.context7]
 command = "npx"
 args = ["-y", "@upstash/context7-mcp"]
+
+[projects."/Users/hisahiro.tsukamoto/github/hihats/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/hisahiro.tsukamoto/github/hihats/slack_guideline_workflow"]
+trust_level = "trusted"
+
+[projects."/Users/hisahiro.tsukamoto/github/crowdworksjp/cw-android"]
+trust_level = "trusted"
+
+[hooks.state]
+
+[hooks.state."/Users/hisahiro.tsukamoto/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:1df76ffc3800e55aa6150be0bfaf40aba69745dc9bead127c96caa64e0af1f76"

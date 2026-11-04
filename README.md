@@ -46,15 +46,17 @@ hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へ
 
 | ファイル | 役割 |
 |---|---|
-| `codex/config.toml` | 承認ポリシー（`on-request`）、sandbox（`workspace-write`、ネットワーク無効）、`CLAUDE.md`しかないリポジトリ向けのフォールバック、MCP（context7） |
+| `codex/config.toml` | 承認ポリシー（`on-request`）、sandbox（`workspace-write`、ネットワーク有効）、`CLAUDE.md`しかないリポジトリ向けのフォールバック、MCP（context7） |
 | `codex/hooks.json` | `SessionStart`で`~/.codex/instructions/*.md`（共有ルール）を文脈に流す仕組み。iTerm2のSession Status連携（`cc-status --agent codex`、iTerm2 3.7.5以降）は入れていない |
 | `codex/rules/dotfiles.rules` | コマンドの許可/禁止。`.claude/settings.json`のBash allow/denyを前方一致ルールに写したもの。`codex execpolicy check --rules codex/rules/dotfiles.rules -- <コマンド>`で確認できる |
+
+`gh`を日常的に使うため、`[sandbox_workspace_write]`の`network_access = true`でコマンドのネットワーク接続を有効にしている。対象は`gh`以外のコマンドも含む。設定変更後は新しいCodexセッションを開始する。
 
 Claude Codeとの差分:
 - hookは初回起動時に`/hooks`で信頼（trust）する必要がある
 - `.claude/rules/`相当の仕組みがないため、共有ルールはhookで注入する。Claude固有の`worktree.md`はCodexには渡らない
 - `Read`/`Edit`のdeny（`.env`や認証情報）に相当する設定が`sandbox_mode`方式にはない。AGENTS.mdで指示するにとどまる
-- 前方一致ルールなので、`git push origin --force`のようにフラグが後ろに来る形は禁止できない（`git push`自体はネットワーク無効のsandbox内で失敗し、承認を求められる）
+- 前方一致ルールなので、`git push origin --force`のようにフラグが後ろに来る形は禁止できない。ネットワークは有効なので、この形を通信制限で止めることもできない
 - Claude Codeのプラグイン（meta-review, ocp-guard）はCodexでは動かない
 - Codexは`config.toml`に自分でも書き込む（プロジェクトのtrust、`codex mcp add`）。symlink先のこのリポジトリに差分が出るのは想定内
 
