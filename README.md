@@ -38,6 +38,21 @@ $ sh makesymlink.sh
 
 hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へsymlinkされる。スクリプト本体はここに置き、どのイベントで呼ぶかはプロジェクト側の`.claude/settings.local.json`で絶対パス指定する（例: `inject-review-practices.sh`は、コードレビュー系スキルの起動時にそのリポジトリの`documents/code_review_practices.md`とCLAUDE.mdの観点を参照させる。対象ファイルがないリポジトリでは何もしない）。
 
+### Claude Code プラグイン
+
+`.claude/settings.json`は`hihats`マーケットプレイス（GitHubの[hihats/claude-plugins](https://github.com/hihats/claude-plugins)）を登録し、`meta-review@hihats`と`ocp-guard@hihats`を有効にしている。有効化は設定だけで、プラグイン本体がこの機体に取得されていないと動かない。meta-reviewの`PreCompact`、ocp-guardの`UserPromptSubmit`/`PreToolUse`のhookは、取得前はエラーにならず黙って動かないので、`makesymlink.sh`の後に取得して確認する:
+
+```bash
+claude plugin marketplace add hihats/claude-plugins
+claude plugin install meta-review@hihats
+claude plugin install ocp-guard@hihats
+claude plugin list   # 2つが enabled なら OK
+```
+
+`marketplace add`は`settings.json`の宣言と重複するが、セッションを一度も起動していない機体では`claude plugin install`が宣言だけではマーケットプレイスを見つけられない（2026-11-05、Claude Code 2.1.318で確認。対話セッションを起動すればバックグラウンドで取得されるが、`/reload-plugins`が要る）。
+
+プラグインを直すときは、`~/github/hihats/claude-plugins`の編集は即反映されない（GitHubソースはキャッシュにコピーされる）。pushしてから`claude plugin marketplace update hihats`と`claude plugin update <name>@hihats`を実行する。`plugin.json`の`version`を上げないと更新扱いにならない。試すだけなら`claude --plugin-dir <path>`で起動する。`claude plugin marketplace remove hihats`はmeta-reviewの記録（`~/.claude/plugins/data/meta-review-hihats/`）ごと消すので使わない。
+
 ### Codex CLI
 
 `brew bundle`で`codex`（cask）が入る。初回は`codex login`（ChatGPTアカウント）を自分で実行する。設定は`codex/`配下で管理し、`makesymlink.sh`が`~/.codex/`へsymlinkする。
