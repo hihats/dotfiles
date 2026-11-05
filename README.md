@@ -36,7 +36,7 @@ $ sh makesymlink.sh
 
 ツール中立の資産は`.agents/`配下に置く。グローバル指示`AGENTS.md`、自作スキル（`.agents/skills/`、例: バックログをINVEST/SMARTで判定する`invest`）、共有ルール（`.agents/rules/`、例: 主張と推論を分ける`claims.md`）がここにあり、同じスクリプトでClaude Code用には`~/.claude/CLAUDE.md`・`~/.claude/skills/`・`~/.claude/rules/`へ、Codex用には`~/.codex/AGENTS.md`・`~/.agents/skills/`・`~/.codex/instructions/`へsymlinkされる。Claude Code固有のルール（`.claude/rules/`、例: worktreeの使い分けを定めた`worktree.md`）は`~/.claude/rules/`にだけ張る。
 
-hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へsymlinkされる。スクリプト本体はここに置き、どのイベントで呼ぶかはプロジェクト側の`.claude/settings.local.json`で絶対パス指定する（例: `inject-review-practices.sh`は、コードレビュー系スキルの起動時にそのリポジトリの`documents/code_review_practices.md`とCLAUDE.mdの観点を参照させる。対象ファイルがないリポジトリでは何もしない）。
+hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へsymlinkされる。スクリプト本体はここに置き、どのイベントで呼ぶかはプロジェクト側の`.claude/settings.local.json`で絶対パス指定する（例: `inject-review-practices.sh`は、コードレビュー系スキルの起動時に、そのリポジトリ内（worktreeで作業中はそのworktree）で追跡されている`code_review_practices.md`（置き場所は問わない）とCLAUDE.mdの観点を参照させる。対象ファイルがないリポジトリでは何もしない）。
 
 ### Claude Code プラグイン
 
