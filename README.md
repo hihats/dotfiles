@@ -34,6 +34,8 @@ $ sh makesymlink.sh
 
 Claude Codeの自作スキル（`.claude/skills/`配下、例: バックログをINVEST/SMARTで判定する`invest`）とユーザールール（`.claude/rules/`配下、例: worktreeの使い分けを定めた`worktree.md`）も、同じスクリプトでそれぞれ`~/.claude/skills/`・`~/.claude/rules/`へsymlinkされる。
 
+hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へsymlinkされる。スクリプト本体はここに置き、どのイベントで呼ぶかはプロジェクト側の`.claude/settings.local.json`で絶対パス指定する（例: `inject-review-practices.sh`は、コードレビュー系スキルの起動時にそのリポジトリの`documents/code_review_practices.md`とCLAUDE.mdの観点を参照させる。対象ファイルがないリポジトリでは何もしない）。
+
 ### Takumi Guard Key（npm/uvのパッケージ取得プロキシ）
 `npm`・`uv`は[Takumi Guard](https://shisho.dev/docs/t/guard/quickstart/)（悪性パッケージをブロックするnpm/PyPI向けセキュリティプロキシ）経由でパッケージを取得する設定になっている。認証トークンはリポジトリに含めていないので、初回セットアップ時に各自で用意する。
 
