@@ -32,9 +32,48 @@ $ sh makesymlink.sh
 ```
 :warning:**ssh/configは公開可能なものだけかチェック**
 
-Claude Codeの自作スキル（`.claude/skills/`配下、例: バックログをINVEST/SMARTで判定する`invest`）とユーザールール（`.claude/rules/`配下、例: worktreeの使い分けを定めた`worktree.md`）も、同じスクリプトでそれぞれ`~/.claude/skills/`・`~/.claude/rules/`へsymlinkされる。
+:warning:**起動中のClaude Codeセッションが張り替え直後のsymlinkを消すことがあるので、Claude Codeを終了してから実行する**
 
-hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へsymlinkされる。スクリプト本体はここに置き、どのイベントで呼ぶかはプロジェクト側の`.claude/settings.local.json`で絶対パス指定する（例: `inject-review-practices.sh`は、コードレビュー系スキルの起動時にそのリポジトリの`documents/code_review_practices.md`とCLAUDE.mdの観点を参照させる。対象ファイルがないリポジトリでは何もしない）。
+ツール中立の資産は`.agents/`配下に置く。グローバル指示`AGENTS.md`、自作スキル（`.agents/skills/`、例: バックログをINVEST/SMARTで判定する`invest`）、共有ルール（`.agents/rules/`、例: 主張と推論を分ける`claims.md`）がここにあり、同じスクリプトでClaude Code用には`~/.claude/CLAUDE.md`・`~/.claude/skills/`・`~/.claude/rules/`へ、Codex用には`~/.codex/AGENTS.md`・`~/.agents/skills/`・`~/.codex/instructions/`へsymlinkされる。Claude Code固有のルール（`.claude/rules/`、例: worktreeの使い分けを定めた`worktree.md`）は`~/.claude/rules/`にだけ張る。
+
+hookスクリプト（`.claude/hooks/`配下）も同様に`~/.claude/hooks/`へsymlinkされる。スクリプト本体はここに置き、どのイベントで呼ぶかはプロジェクト側の`.claude/settings.local.json`で絶対パス指定する（例: `inject-review-practices.sh`は、コードレビュー系スキルの起動時に、そのリポジトリ内（worktreeで作業中はそのworktree）で追跡されている`code_review_practices.md`（置き場所は問わない）とCLAUDE.mdの観点を参照させる。対象ファイルがないリポジトリでは何もしない）。
+
+### Claude Code プラグイン
+
+`.claude/settings.json`は`hihats`マーケットプレイス（GitHubの[hihats/claude-plugins](https://github.com/hihats/claude-plugins)）を登録し、`meta-review@hihats`と`ocp-guard@hihats`を有効にしている。有効化は設定だけで、プラグイン本体がこの機体に取得されていないと動かない。meta-reviewの`PreCompact`、ocp-guardの`UserPromptSubmit`/`PreToolUse`のhookは、取得前はエラーにならず黙って動かないので、`makesymlink.sh`の後に取得して確認する:
+
+```bash
+claude plugin marketplace add hihats/claude-plugins
+claude plugin install meta-review@hihats
+claude plugin install ocp-guard@hihats
+claude plugin list   # 2つが enabled なら OK
+```
+
+`marketplace add`は`settings.json`の宣言と重複するが、セッションを一度も起動していない機体では`claude plugin install`が宣言だけではマーケットプレイスを見つけられない（2026-11-05、Claude Code 2.1.318で確認。対話セッションを起動すればバックグラウンドで取得されるが、`/reload-plugins`が要る）。
+
+プラグインを直すときは、`~/github/hihats/claude-plugins`の編集は即反映されない（GitHubソースはキャッシュにコピーされる）。pushしてから`claude plugin marketplace update hihats`と`claude plugin update <name>@hihats`を実行する。`plugin.json`の`version`を上げないと更新扱いにならない。試すだけなら`claude --plugin-dir <path>`で起動する。`claude plugin marketplace remove hihats`はmeta-reviewの記録（`~/.claude/plugins/data/meta-review-hihats/`）ごと消すので使わない。
+
+### Codex CLI
+
+`brew bundle`で`codex`（cask）が入る。初回は`codex login`（ChatGPTアカウント）を自分で実行する。設定は`codex/`配下で管理し、`makesymlink.sh`が`~/.codex/`へsymlinkする。
+
+置き場を`.codex/`ではなく`codex/`にしているのは、Codexが`<repo>/.codex/`を信頼済みプロジェクトの設定層として`~/.codex/`と「両方」読むため。`.codex/`に置くと、このリポジトリで作業するときだけ同じ`config.toml`・`hooks.json`・`rules/`が二重にロードされ、hookで注入する共有ルールが文脈に2回入る（2026-11-02、codex-cli 0.166.0で確認。リポジトリ外では1回）。`.claude/`はプロジェクト設定として読まれる前提の配置なので同じ扱いにはしていない。
+
+| ファイル | 役割 |
+|---|---|
+| `codex/config.toml` | 承認ポリシー（`on-request`）、sandbox（`workspace-write`、ネットワーク有効）、`CLAUDE.md`しかないリポジトリ向けのフォールバック、MCP（context7） |
+| `codex/hooks.json` | `SessionStart`で`~/.codex/instructions/*.md`（共有ルール）を文脈に流す仕組み。iTerm2のSession Status連携（`cc-status --agent codex`、iTerm2 3.7.5以降）は入れていない |
+| `codex/rules/dotfiles.rules` | コマンドの許可/禁止。`.claude/settings.json`のBash allow/denyを前方一致ルールに写したもの。`codex execpolicy check --rules codex/rules/dotfiles.rules -- <コマンド>`で確認できる |
+
+`gh`を日常的に使うため、`[sandbox_workspace_write]`の`network_access = true`でコマンドのネットワーク接続を有効にしている。対象は`gh`以外のコマンドも含む。設定変更後は新しいCodexセッションを開始する。
+
+Claude Codeとの差分:
+- hookは初回起動時に`/hooks`で信頼（trust）する必要がある
+- `.claude/rules/`相当の仕組みがないため、共有ルールはhookで注入する。Claude固有の`worktree.md`はCodexには渡らない
+- `Read`/`Edit`のdeny（`.env`や認証情報）に相当する設定が`sandbox_mode`方式にはない。AGENTS.mdで指示するにとどまる
+- 前方一致ルールなので、`git push origin --force`のようにフラグが後ろに来る形は禁止できない。ネットワークは有効なので、この形を通信制限で止めることもできない
+- Claude Codeのプラグイン（meta-review, ocp-guard）はCodexでは動かない
+- Codexは`config.toml`に自分でも書き込む（プロジェクトのtrust、`codex mcp add`）。symlink先のこのリポジトリに差分が出るのは想定内
 
 ### Takumi Guard Key（npm/uvのパッケージ取得プロキシ）
 `npm`・`uv`は[Takumi Guard](https://shisho.dev/docs/t/guard/quickstart/)（悪性パッケージをブロックするnpm/PyPI向けセキュリティプロキシ）経由でパッケージを取得する設定になっている。認証トークンはリポジトリに含めていないので、初回セットアップ時に各自で用意する。

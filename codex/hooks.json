@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"$HOME\"/.codex/instructions/*.md 2>/dev/null || true",
+            "timeout": 5,
+            "statusMessage": "Loading shared rules from ~/.codex/instructions/"
+          }
+        ]
+      }
+    ]
+  }
+}

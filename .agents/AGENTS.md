@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file provides guidance to Code Agent(e.g. claude.ai/code) when working with code in this machine globally.
+This file provides guidance to Code Agents (Claude Code, Codex CLI) when working with code in this machine globally.
 
 ## Must
 ### Coding
@@ -42,4 +42,6 @@ This file provides guidance to Code Agent(e.g. claude.ai/code) when working with
 - When creating a uv project, add `.envrc` containing `layout uv` (defined in `.config/direnv/direnvrc`) so bare `python` resolves to `.venv` instead of a pyenv shim
 
 ## Tool-specific rules
+- Shared rules (tool-neutral, e.g. `claims.md` on separating code / record / inference) live in this repo's `.agents/rules/`. Claude Code reads them through symlinks in `~/.claude/rules/`; Codex has no rules directory, so a `SessionStart` hook prints `~/.codex/instructions/*.md` (symlinks to the same files) into context
 - Claude Code: tool-specific instructions live in `~/.claude/rules/` (managed in this repo's `.claude/rules/`), e.g. `worktree.md` for when to use `EnterWorktree` vs `git worktree add`. They load every session alongside this file
+- Codex CLI: `~/.codex/{AGENTS.md,config.toml,hooks.json,rules/}` are symlinks managed in this repo's `codex/` (not `.codex/`, which Codex would also load as a project layer). Plan mode is `/plan` (per session, no config default). Hooks need a one-time trust via `/hooks`. Command policy is `rules/dotfiles.rules`; there is no equivalent of Claude's Read/Edit deny for secrets, so do not open `.env`, credentials or keys

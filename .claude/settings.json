@@ -97,20 +97,14 @@
   },
   "model": "fable",
   "enabledPlugins": {
-    "ocp-guard@ocp-harness": true,
-    "meta-review@hihats": true
+    "meta-review@hihats": true,
+    "ocp-guard@hihats": true
   },
   "extraKnownMarketplaces": {
-    "ocp-harness": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/hisahiro.tsukamoto/Documents/Claude/Projects/エージェント整備/ocp-harness"
-      }
-    },
     "hihats": {
       "source": {
-        "source": "directory",
-        "path": "/Users/hisahiro.tsukamoto/github/hihats/claude-plugins"
+        "source": "github",
+        "repo": "hihats/claude-plugins"
       }
     }
   },
